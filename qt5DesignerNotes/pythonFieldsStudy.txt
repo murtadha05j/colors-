@@ -1,0 +1,6 @@
+pthon field:
+1 web
+2 security - encryption  and hacking
+3 network - protocols 
+4 games
+5 images processing 

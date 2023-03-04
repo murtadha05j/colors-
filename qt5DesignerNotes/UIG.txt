@@ -1,0 +1,7 @@
+read:
+x=QLineEdit(t1) 
+y=x.Text()
+
+write:
+l=QLabel(" label for write ", t1)
+l.setText("sdklfjaslk")
