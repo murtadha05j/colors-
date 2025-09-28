@@ -1,32 +1,47 @@
-# Python program to draw square 
-# using Turtle Programming
 import turtle
 
-w = turtle.Turtle()
-w.color('green')
-w.shape('turtle')
-w.speed(1020)
-x=0
-while x < 120: # while the value of x is lesser than 120,
-                #continuously do this:
-    w.fd(200)
-    w.rt(61)
-    w.color('red')
-    w.fd(200)
-    w.rt(61)
-    w.color('black')
-    w.fd(200)
-    w.color('blue')
-    w.rt(61)
-    w.fd(200)
-    w.rt(61)
-    w.fd(200)
-    w.rt(61)
-    w.color('green')
-    w.fd(200)
-    w.rt(61)
+# --- Setup ---
+screen = turtle.Screen()
+screen.bgcolor("black")
+screen.title("Butterfly Effect - Lorenz Attractor")
+t = turtle.Turtle()
+t.hideturtle()
+t.speed(0)
+turtle.colormode(255)
 
-    w.rt(11.111)
-    x = x+1
+# Lorenz system parameters
+sigma = 10
+rho = 28
+beta = 8/3
+
+# Initial values
+x, y, z = 0., 1., 1.05
+dt = 0.01
+
+points = []
+
+# Generate points
+for i in range(8000):
+    dx = sigma * (y - x) * dt
+    dy = (x * (rho - z) - y) * dt
+    dz = (x * y - beta * z) * dt
+    x += dx
+    y += dy
+    z += dz
+    points.append((x, y, z))
+
+# Scale for screen
+scale = 8
+
+# Draw attractor
+for i, (x, y, z) in enumerate(points):
+    r = (i * 5) % 255
+    g = (i * 2) % 255
+    b = (i * 7) % 255
+    t.color(r, g, b)
+    t.penup()
+    t.goto(x * scale, y * scale)
+    t.pendown()
+    t.dot(2)
 
 turtle.done()
